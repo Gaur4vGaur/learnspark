@@ -5,7 +5,7 @@ import org.apache.spark.SparkContext;
 object WordCounter {
 
     def main(args: Array[String]): Unit = {
-        val inpath = "/home/gaurav/1My/study/myprojects/spark/BDU/spark-foundation1/LabData/notebook.log"
+        val inpath = "input/wiki.txt"
         val outpath = "output/wordcount"
 
         val sc = new SparkContext("local[*]", "Word Count")
