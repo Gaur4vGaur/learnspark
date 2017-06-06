@@ -6,7 +6,7 @@ object WordCounter {
 
     def main(args: Array[String]): Unit = {
         val inpath = "input/wiki.txt"
-        val outpath = "output/wordcount"
+        val outpath = "target/output/wordcount"
 
         val sc = new SparkContext("local[*]", "Word Count")
 
@@ -15,7 +15,7 @@ object WordCounter {
             val wc = input.map(_.toLowerCase).
                     flatMap(txt => txt.split("""\W+""")).
                     groupBy(word => word).
-                    mapValues(group => group.size)
+                    mapValues(group => group.size)//.sortBy(_._2, false) sort descending
 
             println(s"writing output")
             wc.saveAsTextFile(outpath)
